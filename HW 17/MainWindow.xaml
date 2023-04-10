@@ -1,0 +1,64 @@
+﻿<Window x:Class="HW_17.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW_17"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="Transparent">
+        <Border CornerRadius="30 30 30 30" Background="Gray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="1" Grid.Column="1" x:Name="dtgView" AutoGenerateColumns="False" ItemsSource="{Binding}" RowStyle="{StaticResource rowStyle}" Style="{StaticResource dataStyle}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" x:Name="Name" Binding="{Binding product_name}" IsReadOnly="True"/>
+                        <DataGridTextColumn Width="100" x:Name="Price" Binding="{Binding price}" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Width="150" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="Button_Click" Style="{StaticResource buttonStyle}" Content="Добавить" FontSize="15">
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="5"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Border Grid.Column="1" Grid.Row="0">
+                    <Button Height="25" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 25 0" Style="{StaticResource buttonStyle}" Content="Корзина" Click="Button_Click_1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <Border Grid.Column="0" Grid.Row="1">
+                    <Button Height="25" Width="120"  Style="{StaticResource buttonStyle2}" VerticalAlignment="Top" Margin="0 25 0 0" Content="Посмотреть клиентов" Click="Button_Click_2">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
